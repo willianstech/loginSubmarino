@@ -30,6 +30,8 @@ public class login {
 
 		browser.get("https://www.submarino.com.br/");
 		browser.manage().window().maximize();
+		
+		
 	}
 
 	@When("^acessar a pagina de login$")
