@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import com.sun.tools.jxc.gen.config.Config;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -17,6 +19,7 @@ import cucumber.api.java.en.When;
 public class login {
 	
 	private WebDriver browser;
+	
 
 	@Given("^Que eu estou na pagina do submarino$")
 	public void queEuEstouNaPaginaDoSubmarino() throws Throwable {
@@ -45,7 +48,7 @@ public class login {
 	@When("^inserir meus dados$")
 	public void inserirMeusDados() throws Throwable {
 		browser.findElement(By.id("email-input")).sendKeys("willianstech@gmail.com");
-		browser.findElement(By.id("password")).sendKeys("653498ww");
+		browser.findElement(By.id("password")).sendKeys("groovetech");
 
 	}
 
