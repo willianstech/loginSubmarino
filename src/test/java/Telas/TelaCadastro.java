@@ -1,8 +1,15 @@
 package Telas;
 
+import static org.junit.Assert.assertEquals;
+
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
@@ -11,51 +18,88 @@ import cucumber.api.java.en.When;
 
 public class TelaCadastro {
 
-	@Given("^Que eu estou na pagina da casas bahia$")
-	public void que_eu_estou_na_pagina_da_casas_bahia() throws Throwable {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Wesley\\Desktop\\WIllian\\cadastroCasasBahia\\chromedriver.exe");
-		ChromeDriver browser = new ChromeDriver();
-		browser.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-
-		browser.get("https://carrinho.casasbahia.com.br/Checkout?Pagina=cadastrar&ReturnUrl=https://carrinho.casasbahia.com.br#login/");
-		browser.manage().window().maximize();
-		throw new PendingException();
-	}
-
-	@When("^acessar a pagina de cadastro$")
-	public void acessar_a_pagina_de_cadastro() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
-	}
+	ChromeDriver browser = new ChromeDriver();
 
 	@When("^inserir meus dados$")
 	public void inserir_meus_dados() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		Robot robot = new Robot();
+
+		// REALIZAR VALIDAÇÃO DE ELEMENTO "IDENTIFICAÇÃO"
+//		WebElement mensagemEmail = browser.findElement(By.className("entrar-formError --zeroLeft"));
+//		assertEquals("E-mail ou senha incorretos", mensagemEmail.getText());
+
+		browser.findElement(By.id("NomeCompleto")).sendKeys("Aaaa aaa");
+		browser.findElement(By.id("Cpf")).sendKeys("82608098932");
+		browser.findElement(By.id("Telefone1DDDPF")).sendKeys("11");
+		browser.findElement(By.id("Telefone2PF")).sendKeys("111111111");
+		browser.findElement(By.id("DataNascimentoDia")).sendKeys("11");
+		browser.findElement(By.id("DataNascimentoMes")).sendKeys("11");
+		browser.findElement(By.id("DataNascimentoAno")).sendKeys("1111");
+		browser.findElement(By.id("Sexo")).click();
+		browser.findElement(By.id("Email")).sendKeys("11111@111.11");
+		/*
+		 * robot.keyPress(KeyEvent.VK_TAB); browser.findElementByName("")
+		 */
+		browser.findElement(By.id("ReceberAvisoEmail")).click();
+		browser.findElement(By.id("ReceberAvisoSms")).click();
+		browser.findElement(By.id("btnClienteSalvarComCaptcha")).click();
 	}
 
 	@When("^clicar em 'Continuar'$")
 	public void clicar_em_Continuar() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		browser.findElement(By.id("login-button")).click();
 	}
 
 	@Then("^ira aparecer a informacao 'Ola Nome'$")
 	public void ira_aparecer_a_informacao_Ola_Nome() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		WebElement botaoClicar = browser.findElement(By.id("login-button"));
+
+		while ((botaoClicar.isEnabled())) {
+			int i = 1000;
+			Thread.sleep(i);
+			if (!(botaoClicar.isDisplayed())) {
+				WebElement mensagemEmail = browser.findElement(By.className("usr-nick"));
+				assertEquals("Nome", mensagemEmail.getText());
+				browser.quit();
+				break;
+			}
+			i++;
+		}
 	}
 
 	@When("^inserir meus dados incorretos$")
 	public void inserir_meus_dados_incorretos() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		browser.findElement(By.id("NomeCompleto")).sendKeys("Aaaaa aaaa");
+		browser.findElement(By.id("Cpf")).sendKeys("82608098932");
+		browser.findElement(By.id("Telefone1DDDPF")).sendKeys("11");
+		browser.findElement(By.id("Telefone2PF")).sendKeys("111111111");
+//		browser.findElement(By.id("DataNascimentoDia")).sendKeys("11");
+		browser.findElement(By.id("DataNascimentoMes")).sendKeys("11");
+		browser.findElement(By.id("DataNascimentoAno")).sendKeys("1111");
+		browser.findElement(By.id("Sexo")).click();
+		browser.findElement(By.id("Email")).sendKeys("11111@111.11");
+		/*
+		 * robot.keyPress(KeyEvent.VK_TAB); browser.findElementByName("")
+		 */
+		browser.findElement(By.id("ReceberAvisoEmail")).click();
+		browser.findElement(By.id("ReceberAvisoSms")).click();
+		browser.findElement(By.id("btnClienteSalvarComCaptcha")).click();
 	}
 
 	@Then("^ira aparecer a mensagem 'E-mail ou senha incorretos'$")
 	public void ira_aparecer_a_mensagem_E_mail_ou_senha_incorretos() throws Throwable {
-		// Write code here that turns the phrase above into concrete actions
-		throw new PendingException();
+		WebElement botaoClicar = browser.findElement(By.id("login-button"));
+		while ((botaoClicar.isEnabled())) {
+			int i = 1000;
+			Thread.sleep(i);
+			if (!(botaoClicar.isDisplayed())) {
+				WebElement mensagemEmail = browser.findElement(By.className("entrar-formError --zeroLeft"));
+				assertEquals("E-mail ou senha incorretos", mensagemEmail.getText());
+				browser.quit();
+				break;
+			}
+			i++;
+		}
 	}
 
 }
