@@ -69,13 +69,19 @@ public class TelaCadastro {
 
 	@When("^inserir meus dados incorretos$")
 	public void inserir_meus_dados_incorretos() throws Throwable {
+		
+		//Selecionar RadioButton
+		//Clicar Continuar
+		browser.findElement(By.id("rbNaoCadastrado")).click();
+		browser.findElement(By.id("btnClienteCadastrar")).click();
+		
 		browser.findElement(By.id("NomeCompleto")).sendKeys("Aaaaa aaaa");
 		browser.findElement(By.id("Cpf")).sendKeys("82608098932");
 		browser.findElement(By.id("Telefone1DDDPF")).sendKeys("11");
 		browser.findElement(By.id("Telefone2PF")).sendKeys("111111111");
 //		browser.findElement(By.id("DataNascimentoDia")).sendKeys("11");
 		browser.findElement(By.id("DataNascimentoMes")).sendKeys("11");
-		browser.findElement(By.id("DataNascimentoAno")).sendKeys("1111");
+		//browser.findElement(By.id("DataNascimentoAno")).sendKeys("1111");
 		browser.findElement(By.id("Sexo")).click();
 		browser.findElement(By.id("Email")).sendKeys("11111@111.11");
 		/*

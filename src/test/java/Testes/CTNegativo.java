@@ -14,7 +14,7 @@ public class CTNegativo {
 	@Test
 
 	public void sysout() throws Throwable {
-		System.out.println("Teste.123");
+		
 		inicial.acessarPaginaInicial();
 		cadastro.inserirDadosIncorretos();
 		browser.quit();
