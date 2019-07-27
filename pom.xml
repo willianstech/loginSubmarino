@@ -4,8 +4,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>br.com.submarino</groupId>
-	<artifactId>submarino</artifactId>
+	<groupId>br.com.cadastroCasasBahia</groupId>
+	<artifactId>cadastroCasasBahia</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
 	<dependencies>
@@ -43,6 +43,14 @@
 			<artifactId>cucumber-junit</artifactId>
 			<version>1.2.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/gherkin -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>gherkin</artifactId>
+			<version>6.0.17</version>
+		</dependency>
+
 
 
 
