@@ -18,5 +18,9 @@ public class CTNegativo {
 		inicial.acessarPaginaInicial();		
 		cadastro.inserirDadosIncorretos();
 		browser.quit();
+		
+		
+		
+		
 	}
 }
