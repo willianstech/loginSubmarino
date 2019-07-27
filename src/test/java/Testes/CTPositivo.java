@@ -16,6 +16,9 @@ public class CTPositivo {
 	public void sysout() throws Throwable {
 		System.out.println("Teste.123");
 		inicial.acessarPaginaInicial();
+		
+		
+		
 		cadastro.inserirDadosPaginaCadastro();
 		browser.quit();
 	}
